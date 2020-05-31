@@ -1,0 +1,59 @@
+<div lang="he" id="background-container">
+  <h1 id="title">שאלון נוכחות יומי</h1>
+
+  <div id="input-containers">
+    <mat-form-field id="name">
+      <input
+        [(ngModel)]="postData.name"
+        matInput
+        type="text"
+        placeholder="שם"
+        class="inputs"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        [(ngModel)]="postData.armyId"
+        matInput
+        placeholder="מספר אישי"
+        class="inputs"
+        #armyIdInput
+      />
+    </mat-form-field>
+  </div>
+
+  <h2>יחידה:</h2>
+  <tr *ngFor="let unit of units" class="radioButtons">
+    <div class="units" >
+      <td>
+        <mat-radio-button
+          labelPosition="before"
+          value="{{ unit }}"
+          (change)="unitSelected($event)"
+          class="unit"
+          >{{ unit }}</mat-radio-button
+        >
+      </td>
+    </div>
+  </tr>
+
+  <h2>מיקום:</h2>
+
+  <mat-form-field id="select">
+    <mat-select
+      (change)="locationSelected($event)"
+      [(value)]="postData.location"
+    >
+      <mat-option
+        *ngFor="let base of bases"
+        style="width: 100%; text-align: center;"
+        value="{{ base }}"
+        >{{ base }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+
+  <button id="submitButton" mat-stroked-button [disabled]="checkData()" (click)="addPerson()">
+    שלח טופס
+  </button>
+</div>

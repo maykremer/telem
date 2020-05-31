@@ -1,0 +1,58 @@
+#background-container {
+  background-image: url("../pictures/background.jpeg");
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 850px;
+  margin: auto;
+  border-radius: 20px;
+}
+
+#title {
+  text-align: center;
+  font-family: system-ui;
+  margin-bottom: 76px;
+  margin-top: 2.5%;
+  margin-left: 76%;
+}
+
+#input-containers {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin-left: 76%;
+}
+
+h2 {
+  font-family: system-ui;
+  margin: 30px;
+  margin-left: 83%;
+}
+
+.units {
+  padding: 7px;
+}
+#select {
+  margin-bottom: 15px;
+  margin-left: 76%;
+}
+
+#submitButton {
+  margin: 15px;
+  width: 150px;
+  border-color: grey;
+  margin-left:78.7%;
+  font-size: large;
+
+}
+
+.radioButtons {
+  margin-left: 80.5%;
+
+}
+
+.unit{
+    font-size: large;
+}

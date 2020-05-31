@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: green;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+  color: green;
+  background-color: green;
+}
+
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  background-color: green;
+}
+
+.mat-form-field-ripple {
+  background-color: green !important;
+}
+
+.mat-focused .mat-form-field-label {
+  color: green !important;
+}
+
+body{
+  height: 100%;
+  overflow: hidden;
+}
+
+html{
+  height: 100%;
+}
