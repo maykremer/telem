@@ -12,31 +12,6 @@ module.exports = {
     PM2_SERVE_PATH: './server',
     PM2_SERVE_PORT: 3000
   }, 
-  // {
-  //   mame: "client",
-  //   watch: true,
-  //   script: '',
-  //   env: {
-  //     NODE_ENV: "development"
-  //   },
-  //   env_production: {
-  //     NODE_ENV: "production",
-  //   },
-  //   PM2_SERVE_PORT: 4200
-  // }, 
-  //  {
-  //   mame: "client",
-  //   script: './serveClient.sh',
-  //   // PM2_SERVE_PATH: './client',
-  //   // PM2_SERVE_PORT: 4200,
-  //   watch: true
-  // },
-  
-  // // {
-  // //   mame: "angular",
-  // //   script: 'ng serve',
-  // //   watch: true
-  // // }
 ],
 
   deploy : {
