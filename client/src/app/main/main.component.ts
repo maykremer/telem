@@ -44,5 +44,6 @@ export class MainComponent implements OnInit {
         console.log(responseData);
       });
     console.log('postttt');
+    
   }
 }

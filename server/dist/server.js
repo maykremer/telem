@@ -1,42 +1,17 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Server = void 0;
-const express_1 = __importDefault(require("express"));
-const bodyParser = __importStar(require("body-parser"));
-const mongoose = __importStar(require("mongoose"));
-const personRouter_1 = __importDefault(require("./personRouter"));
-const config_1 = __importDefault(require("./config"));
-const middleware_1 = require("./authentication/middleware");
-const handler_1 = require("./authentication/handler");
-const cors_1 = __importDefault(require("cors"));
-const session = require("express-session");
-const cookieParser = require("cookie-parser");
-const passport = require("passport");
+const express = require("express");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const config_1 = require("./config");
+const cors = require("cors");
+const mainRouter_1 = require("./mainRouter");
 const path = require('path');
-// const shraga = require("./passport.js");
-const app = express_1.default();
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const hanlder_1 = require("./authentication/hanlder");
+const router_1 = require("./authentication/router");
 const SERVER_PORT = config_1.default.serverPort;
 class Server {
     constructor() {
@@ -49,28 +24,20 @@ class Server {
             res.setHeader("Access-Control-Allow-Headers", "Authorization, Origin, X-Requested-With, Content-Type");
             next();
         };
-        this.app = express_1.default();
-        this.app.use('/', express_1.default.static(path.join(__dirname, '../../client/dist/telem')));
-        this.app.use(cors_1.default());
+        this.app = express();
         this.app.use(this.setHeaders);
+        this.app.use(cors());
         this.app.use(bodyParser.json());
+        this.app.use(express.urlencoded({ extended: true }));
         this.app.use(cookieParser());
-        this.app.use(passport.initialize());
-        this.app.use(passport.session({
-            secret: config_1.default.auth.secret,
+        this.app.use(session({
+            secret: 'keyboard cat',
             resave: false,
-            saveUninitialized: true
+            saveUninitialized: true,
         }));
-        // console.log("asd");
-        this.initializeAuthenticator();
-        // this.app.use((req, res, next) => {
-        //   if (!req.user)
-        //   res.redirect("/auth")
-        //   else
-        //   next();
-        // });
-        this.app.get('/user', middleware_1.AuthenticationMiddleware.requireAuth, (req, res, next) => res.send(req.user));
-        this.app.use(personRouter_1.default);
+        this.initAuthentication();
+        this.app.use(mainRouter_1.AppRouter);
+        this.app.use('/', express.static(path.join(__dirname, '../../client/dist/telem')));
         this.app.listen(SERVER_PORT, () => {
             console.log(`server is listening on port ${SERVER_PORT}`);
         });
@@ -79,9 +46,10 @@ class Server {
     static createServer() {
         return new Server();
     }
-    initializeAuthenticator() {
-        handler_1.AuthenticationHandler.initialize(this.app);
-        // this.app.use('/auth/', AuthenticationRouter);
+    initAuthentication() {
+        hanlder_1.AuthenticationHandler.initialize(this.app);
+        this.app.use('/auth/', router_1.AuthenticationRouter);
     }
 }
 exports.Server = Server;
+//# sourceMappingURL=server.js.map

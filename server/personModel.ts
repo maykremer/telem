@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import * as mongoose from "mongoose";
 import { Person } from "./personInterface";
 
 mongoose.connect("mongodb://localhost:27017/telem", {
