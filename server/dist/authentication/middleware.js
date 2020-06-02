@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AuthenticationMiddleware = void 0;
 class AuthenticationMiddleware {
     static requireAuth(req, res, next) {
         if (req.user) {

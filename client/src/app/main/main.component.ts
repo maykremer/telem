@@ -12,14 +12,22 @@ export class MainComponent implements OnInit {
   units: string[] = ['יחידה 1', 'יחידה 2', 'יחידה 3', 'יחידה 4', 'יחידה 5 '];
   bases: string[] = ['בסיס 1', 'בסיס 2', 'בסיס 3', 'בסיס 4', 'בסיס 5 '];
 
-  // name: string = '';
-  // armyId: string = '';
-  // unit: string = '';
-  // location: string = '';
-  // postData: {name: string, armyId: string, unit: string, location: string};
   postData: Person = { name: '', armyId: '', unit: '', location: '' };
+  user: { firstName: string; lastName: string; armyId: string } = {
+    firstName: '',
+    lastName: '',
+    armyId: '',
+  };
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('angularrrrrr');
+    this.http.get('http://localhost:3000/user').subscribe((user: any) => {
+      console.log(user);
+      this.user.firstName = user.name.firstName;
+      this.user.lastName = user.name.lastName;
+      this.user.armyId = user.iat;
+    });
+  }
 
   unitSelected(event: any) {
     this.postData.unit = event.value;
@@ -28,8 +36,12 @@ export class MainComponent implements OnInit {
     this.postData.location = event.value;
   }
 
-  checkData(){
-    return Object.values(this.postData).some((value) => value === '');
+  checkData() {
+    console.log(this.postData);
+    if (this.postData.unit === ''|| this.postData.location === '') {
+      return true;
+    }
+    return false;
   }
 
   addPerson() {
@@ -43,7 +55,5 @@ export class MainComponent implements OnInit {
       .subscribe((responseData) => {
         console.log(responseData);
       });
-    console.log('postttt');
-    
   }
 }

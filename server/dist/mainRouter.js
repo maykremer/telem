@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppRouter = void 0;
 const express_1 = require("express");
 const personRouter_1 = require("./personRouter");
 const middleware_1 = require("./authentication/middleware");

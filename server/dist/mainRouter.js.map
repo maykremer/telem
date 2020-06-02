@@ -1,1 +1,1 @@
-{"version":3,"file":"mainRouter.js","sourceRoot":"","sources":["../mainRouter.ts"],"names":[],"mappings":";;;AAAA,qCAAiC;AACjC,iDAA0C;AAC1C,4DAAuE;AAEvE,MAAM,SAAS,GAAW,gBAAM,EAAE,CAAC;AAI1B,8BAAS;AAFlB,SAAS,CAAC,GAAG,CAAC,GAAG,EAAE,qCAAwB,CAAC,WAAW,EAAE,sBAAY,CAAC,CAAC"}
+{"version":3,"file":"mainRouter.js","sourceRoot":"","sources":["../mainRouter.ts"],"names":[],"mappings":";;AAAA,qCAAiC;AACjC,iDAA0C;AAC1C,4DAAuE;AAEvE,MAAM,SAAS,GAAW,gBAAM,EAAE,CAAC;AAI1B,8BAAS;AAFlB,SAAS,CAAC,GAAG,CAAC,GAAG,EAAE,qCAAwB,CAAC,WAAW,EAAE,sBAAY,CAAC,CAAC"}

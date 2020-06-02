@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PersonController = void 0;
 const personManager_1 = require("./personManager");
 const mongoose = require("mongoose");
+const hanlder_1 = require("./authentication/hanlder");
 class PersonController {
     static async create(req, res, next) {
         const person = {
@@ -12,9 +12,12 @@ class PersonController {
             unit: req.body.unit,
             location: req.body.location
         };
-        console.log(req.body);
         res.json(await personManager_1.PersonManager.create(person));
         res.end();
+    }
+    static async getUser(req, res, next) {
+        console.log(` controllerrrrrrrrr: ${hanlder_1.AuthenticationHandler.user}`);
+        res.send(hanlder_1.AuthenticationHandler.user);
     }
 }
 exports.PersonController = PersonController;

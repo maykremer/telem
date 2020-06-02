@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AuthenticationRouter = void 0;
 const express_1 = require("express");
 const passport = require("passport");
 const AuthenticationRouter = express_1.Router();
