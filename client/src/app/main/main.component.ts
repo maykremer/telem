@@ -20,12 +20,12 @@ export class MainComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    console.log('angularrrrrr');
     this.http.get('http://localhost:3000/user').subscribe((user: any) => {
-      console.log(user);
       this.user.firstName = user.name.firstName;
       this.user.lastName = user.name.lastName;
       this.user.armyId = user.iat;
+      this.postData.name = user.name.firstName + ' ' + user.name.lastName;
+      this.postData.armyId = user.iat;
     });
   }
 
@@ -37,11 +37,8 @@ export class MainComponent implements OnInit {
   }
 
   checkData() {
-    console.log(this.postData);
-    if (this.postData.unit === ''|| this.postData.location === '') {
-      return true;
-    }
-    return false;
+
+    return Object.values(this.postData).some((value) => value === '');
   }
 
   addPerson() {
