@@ -21,16 +21,16 @@ export class Server {
   
   constructor() {
     this.app = express();
-    this.app.use(this.setHeaders);
     this.app.use(cors());
+    this.app.use(this.setHeaders);
     this.app.use(bodyParser.json());
-    this.app.use(express.urlencoded({extended: true}));
     this.app.use(cookieParser());
     this.app.use(session({
       secret: 'keyboard cat',
       resave: false,
       saveUninitialized: true,
     }));
+    this.app.use(express.urlencoded({extended: true}));
     this.initAuthentication();
     this.app.use(AppRouter);
     this.app.use('/', express.static(path.join(__dirname, '../../client/dist/telem')));

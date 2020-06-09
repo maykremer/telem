@@ -19,7 +19,6 @@ export class AuthenticationHandler {
         });
 
         passport.deserializeUser((id, cb) => {
-            // console.log(id);
             try {
                 const user = { uid: '205707219' };
                 cb(undefined, user);
@@ -30,7 +29,6 @@ export class AuthenticationHandler {
 
         const { shragaURL, callbackURL } = config.auth;
         passport.use(new Strategy({ shragaURL, callbackURL }, (profile: any, done: any) => {
-            // console.log('test')
             done(null, profile);
         }));
 

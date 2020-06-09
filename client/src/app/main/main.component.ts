@@ -48,7 +48,7 @@ export class MainComponent implements OnInit {
     console.log(`location:  ${this.postData.location}`);
     console.log(`post data:  ${this.postData}`);
     this.http
-      .post('http://localhost:3000/', this.postData)
+      .post('/', this.postData)
       .subscribe((responseData) => {
         console.log(responseData);
       });
